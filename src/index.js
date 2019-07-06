@@ -1,10 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//Router
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+// //Redux
+import {createStore} from 'redux'
+// import thunk from 'redux-thunk'
+import {Provider} from 'react-redux'
+
+//MULTIPLE REDUCERS
+import reducer from './Redux/reducer'
+
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+ReactDOM.render(
+  <Provider store={store}>
+  <Router>
+  <Route component={App} />
+  </Router>
+  </Provider>,
+  document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
