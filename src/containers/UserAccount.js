@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PaymentContainer from './PaymentContainer'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -53,6 +54,9 @@ class UserAccount extends Component {
                 <Card.Meta>Joined in 2019</Card.Meta>
                 <Card.Description>{this.props.currentUser && this.props.currentUser.first_name} {this.props.currentUser &&  this.props.currentUser.last_name}</Card.Description>
                 <Card.Description>{this.props.currentUser && this.props.currentUser.email}</Card.Description>
+
+                <br />
+                <Button>Payment Method</Button>
               </Card.Content>
               <Card.Content extra>
                 <a>
@@ -97,16 +101,18 @@ class UserAccount extends Component {
             <Grid columns={3} divided>
       <Grid.Row>
         <Grid.Column>
-          <Image src='/images/wireframe/media-paragraph.png' />
+
           {
             this.props.currentUser !== null ?
             this.props.currentUser.trips.map(trip => {
-              return <h1>{trip.destination.location}</h1>
+              return <div>
+              <h1>{trip.destination.location}</h1>
+              <Image src={trip.destination.image} />
+              </div>
             })
             :
             null
           }
-          <p>Test </p>
         </Grid.Column>
       </Grid.Row>
        </Grid>

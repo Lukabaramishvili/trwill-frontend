@@ -10,7 +10,9 @@ import UserAccount from './containers/UserAccount'
 import DestinationContainer from './components/DestinationContainer'
 import PricingComponent from './components/PricingComponent'
 import DestinationShowPage from './components/DestinationShowPage'
+import HomePage from './components/HomePage'
 import HowItWorks from './components/HowItWorks'
+import CreateYourTrip from './components/CreateYourTrip'
 import { connect } from 'react-redux';
 
 
@@ -49,7 +51,9 @@ class App extends Component {
             <Route path="/destinations" component={DestinationContainer} />
             <Route path="/pricing" component={PricingComponent} />
             <Route path="/show" component={DestinationShowPage} />
+            <Route path="/home" component={HomePage} />
             <Route path="/how" component={HowItWorks} />
+            <Route path="/create" component={CreateYourTrip} />
 						<Route path="/login" render={(routerProps) => {
 							return <LoginForm {...routerProps}/>
 						}} />

@@ -23,11 +23,11 @@ class DestinationCard extends Component {
     const {image, location, description, price, timeframe} = this.props.destination
     return (
       <Card>
-    <Image src={image} wrapped ui={false} />
+    <Image src={image} wrapped ui={true} />
     <Card.Content>
       <Card.Header>{location}</Card.Header>
       <Card.Meta>
-        <span className='date'>Traveling Period: <br/> {timeframe}</span>
+        <br />
           <Modal trigger={<Button>See Details</Button>}>
           <Modal.Header>{location}</Modal.Header>
           <Modal.Content image>

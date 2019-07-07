@@ -10,10 +10,10 @@ class Navbar extends Component {
     return (
       <Grid.Row>
   <Grid.Column width={16}>
-    <Menu>
+    <Menu secondary>
     <Menu.Item as='a' header>
       <Link to="/home">
-         <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
+         <Image size='mini' src='../trawill-logo.png' style={{ marginRight: '1.5em' }} />
          TraWill
          </Link>
        </Menu.Item>
@@ -25,6 +25,9 @@ class Navbar extends Component {
       </Link>
       <Link className="item" to="/pricing">
         Pricing
+      </Link>
+      <Link className="item" to="/create">
+        Create Your Travel
       </Link>
       {
         this.props.currentUser

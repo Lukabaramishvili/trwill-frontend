@@ -131,3 +131,7 @@ border-top: 1px solid rgba(34,36,38,.15) !important;
 .ui.search + .results > .ui.divided.list>.item:first-child {
 border-top: none !important;
 }
+
+.background {
+  background-image: url("https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+}
