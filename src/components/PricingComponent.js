@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Divider, Form, Grid, Segment } from 'semantic-ui-react'
+
 import { connect } from 'react-redux';
 
 class PricingComponent extends Component {
@@ -15,7 +15,7 @@ class PricingComponent extends Component {
         'Authorization': `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
-        subscription_id: 10
+        subscription_id: 12
       })
     })
     .then(res => res.json())
@@ -34,7 +34,7 @@ class PricingComponent extends Component {
         'Authorization': `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
-        subscription_id: 11
+        subscription_id: 13
       })
     })
     .then(res => res.json())

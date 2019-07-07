@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { Card, Icon, Image, Modal, Button, Header, Divider } from 'semantic-ui-react'
+import { Card, Icon, Image, Modal, Button, Header, Divider, Input, Grid, Segment } from 'semantic-ui-react'
 
 class DestinationCard extends Component {
 
@@ -22,6 +22,7 @@ class DestinationCard extends Component {
     // debugger
     const {image, location, description, price, timeframe} = this.props.destination
     return (
+
       <Card>
     <Image src={image} wrapped ui={true} />
     <Card.Content>
@@ -38,6 +39,15 @@ class DestinationCard extends Component {
               <p>{description}</p>
               <Divider />
               <p>Traveling Period: {timeframe}</p>
+              <br />
+              <Header>Users Traveling in this location</Header>
+              {
+                this.props.destination.users.map(user => {
+                  return <div>
+                    <li>User - {user.username} </li>
+                  </div>
+                })
+              }
             </Modal.Description>
           </Modal.Content>
         </Modal>
@@ -47,6 +57,7 @@ class DestinationCard extends Component {
       </Card.Meta>
     </Card.Content>
   </Card>
+
     );
   }
 }

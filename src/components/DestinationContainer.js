@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DestinationCard from './DestinationCard'
-import { Card } from 'semantic-ui-react'
+import { Card, Segment, Grid, Input, Divider, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class DestinationContainer extends Component {
@@ -16,6 +16,9 @@ class DestinationContainer extends Component {
 
   render() {
     return (
+
+      <Grid columns={2} stackable className="fill-content">
+      <Segment>
       <Card.Group itemsPerRow={3}>
       {
         this.props.destinations.map(destination => {
@@ -23,6 +26,9 @@ class DestinationContainer extends Component {
         })
       }
       </Card.Group>
+      </Segment>
+    </Grid>
+
     );
   }
 }

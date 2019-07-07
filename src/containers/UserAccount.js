@@ -36,13 +36,15 @@ class UserAccount extends Component {
       }) )
   }
 
+
   render() {
     // const { first_name, last_name, email, username } = this.props
     // console.log(this.state.tripsArr);
     console.log(this.props.currentUser);
     return (
+
     <Grid columns={2} stackable className="fill-content">
-      <Grid.Row stretched>
+      <Grid.Row>
         <Grid.Column width={1} />
         <Grid.Column width={7}>
           <Segment>
@@ -98,7 +100,7 @@ class UserAccount extends Component {
           <Radio toggle />
           <Divider />
           <Header as="h4">Current Trips</Header>
-            <Grid columns={3} divided>
+            <Grid columns={1} divided>
       <Grid.Row>
         <Grid.Column>
 
@@ -106,13 +108,15 @@ class UserAccount extends Component {
             this.props.currentUser !== null ?
             this.props.currentUser.trips.map(trip => {
               return <div>
-              <h1>{trip.destination.location}</h1>
+              <p>{trip.destination.location}</p>
               <Image src={trip.destination.image} />
+              <Button onClick={this.handleDelete} negative> delete trip</Button>
               </div>
             })
             :
             null
           }
+
         </Grid.Column>
       </Grid.Row>
        </Grid>
@@ -121,6 +125,7 @@ class UserAccount extends Component {
         <Grid.Column width={1} />
       </Grid.Row>
     </Grid>
+
     );
   }
 }
