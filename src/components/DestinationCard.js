@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Card, Icon, Image, Modal, Button, Header, Divider, Input, Grid, Segment } from 'semantic-ui-react'
 
@@ -20,7 +21,7 @@ class DestinationCard extends Component {
 
   render() {
     // debugger
-    const {image, location, description, price, timeframe} = this.props.destination
+    const { id, image, location, description, price, timeframe} = this.props.destination
     return (
 
       <Card>
@@ -29,6 +30,9 @@ class DestinationCard extends Component {
       <Card.Header>{location}</Card.Header>
       <Card.Meta>
         <br />
+        <Link to={`show/${id}`}>
+          <Button>See More</Button>
+          </Link>
           <Modal trigger={<Button>See Details</Button>}>
           <Modal.Header>{location}</Modal.Header>
           <Modal.Content image>

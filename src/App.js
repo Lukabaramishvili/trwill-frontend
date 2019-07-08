@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 
 class App extends Component {
 
+
 	componentDidMount(){
 		const token = localStorage.getItem("token")
 		if(token){
@@ -38,6 +39,12 @@ class App extends Component {
 				}
 			})
 		}
+		fetch('http://localhost:3000/destinations')
+		.then(res => res.json())
+		.then(destinations => {
+			// console.log("Fetched destinations in DestinationContainer:", destinations);
+			this.props.getDestinationsList(destinations)
+		})
 	}
 
   render() {
@@ -50,7 +57,7 @@ class App extends Component {
             <Route path="/users/:id" component={UserAccount} />
             <Route path="/destinations" component={DestinationContainer} />
             <Route path="/pricing" component={PricingComponent} />
-            <Route path="/show" component={DestinationShowPage} />
+            <Route path="/show/:id" component={DestinationShowPage} />
             <Route path="/home" component={HomePage} />
             <Route path="/how" component={HowItWorks} />
             <Route path="/create" component={CreateYourTrip} />
@@ -71,7 +78,8 @@ class App extends Component {
 function mapStateToProps(state){
 
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+		destinations: state.destinations
   }
 }
 
@@ -83,8 +91,11 @@ function mapDispatchToProps(dispatch) {
     logOut:() => {
       localStorage.clear();
       dispatch({type: 'LOG_OUT'})
-    }
-  }
+    },
+		getDestinationsList:(destinationArray) => {
+		  dispatch({ type: "GET_DESTINATION_ARR", payload: destinationArray })
+  	}
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 
 class DestinationContainer extends Component {
 
-  componentDidMount = () => {
-    fetch('http://localhost:3000/destinations')
-    .then(res => res.json())
-    .then(destinations => {
-      // console.log("Fetched destinations in DestinationContainer:", destinations);
-      this.props.getDestinationsList(destinations)
-    })
-  }
+  // componentDidMount = () => {
+  //   fetch('http://localhost:3000/destinations')
+  //   .then(res => res.json())
+  //   .then(destinations => {
+  //     // console.log("Fetched destinations in DestinationContainer:", destinations);
+  //     this.props.getDestinationsList(destinations)
+  //   })
+  // }
 
   render() {
     return (
@@ -40,12 +40,12 @@ function mapStateToProps(state){
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getDestinationsList:(destinationArray) => {
-      dispatch({ type: "GET_DESTINATION_ARR", payload: destinationArray })
-    }
-  }
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     getDestinationsList:(destinationArray) => {
+//       dispatch({ type: "GET_DESTINATION_ARR", payload: destinationArray })
+//     }
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DestinationContainer);
+export default connect(mapStateToProps)(DestinationContainer);

@@ -28,6 +28,18 @@ function reducer(state=initialState, action) {
     case 'SAVE_DESTINATION_TO_USER':
       return {...state, bookedDestination: action.payload}
 
+    case "SAVE_COMMENT_TO_DESTINATION":
+        const newCommentInDestination = state.destinations.map(destination =>{
+          if(destination.id === action.payload.destination_id){
+            destination.comments = [...destination.comments, action.payload]
+            return destination
+          }
+          else{
+            return destination
+          }
+        })
+      return {...state, destinations: newCommentInDestination}
+
     default:
     return state;
   }

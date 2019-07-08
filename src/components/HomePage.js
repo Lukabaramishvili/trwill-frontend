@@ -16,7 +16,7 @@ class HomePage extends Component {
           <div className="ui vertical stripe segment">
             <div className="ui text container">
               <h1 className="ui  header">
-                Subscription Based Travel
+                 Welocme to Subscription Based Travel
               </h1>
               <h2>Travel multitle times per year for just $50 per month</h2>
               <Link to="/destinations" >
