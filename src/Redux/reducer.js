@@ -26,12 +26,37 @@ function reducer(state=initialState, action) {
 
     // Booked Destinations
     case 'SAVE_DESTINATION_TO_USER':
-      return {...state, bookedDestination: action.payload}
+      // debugger
+      return {...state, currentUser: {...state.currentUser, trips: [...state.currentUser.trips, action.payload]}, bookedDestination: action.payload}
+
+    case 'DELETE_DESTINATION_FROM_USER':
+      const newTripsArr = state.currentUser.trips.filter(trip => {
+        return trip.id !== action.payload.id
+      })
+      return {...state, currentUser: {...state.currentUser, trips: newTripsArr}}
+
+    case 'DELETE_COMMENT_FROM_SHOW_PAGE':
+      // const destination = state.destination.find(dest => {
+      //   return action.payload.destination_id === dest.id
+      // })
+      // const filteredComments = destination.comments.filter(comment => comment.id !== action.payload.id)
+      // destination.comments = filteredComments
+      const deletedCommentInDestination = state.destinations.map(destination =>{
+        if(destination.id === action.payload.destination_id){
+          const newComments = destination.comments.filter(comment => comment.id !== action.payload.id)
+          const newDestination = {...destination, comments: newComments}
+          return newDestination
+        }
+        else{
+          return destination
+        }
+      })
+      return {...state, destinations: deletedCommentInDestination}
 
     case "SAVE_COMMENT_TO_DESTINATION":
         const newCommentInDestination = state.destinations.map(destination =>{
           if(destination.id === action.payload.destination_id){
-            destination.comments = [...destination.comments, action.payload]
+            destination.comments = [action.payload, ...destination.comments]
             return destination
           }
           else{

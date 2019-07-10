@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import DestinationCard from './DestinationCard'
 import { Card, Segment, Grid, Input, Divider, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 class DestinationContainer extends Component {
-
-  // componentDidMount = () => {
-  //   fetch('http://localhost:3000/destinations')
-  //   .then(res => res.json())
-  //   .then(destinations => {
-  //     // console.log("Fetched destinations in DestinationContainer:", destinations);
-  //     this.props.getDestinationsList(destinations)
-  //   })
-  // }
 
   render() {
     return (
@@ -28,7 +21,6 @@ class DestinationContainer extends Component {
       </Card.Group>
       </Segment>
     </Grid>
-
     );
   }
 }

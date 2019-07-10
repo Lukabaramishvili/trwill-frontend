@@ -135,3 +135,41 @@ border-top: none !important;
 .background {
   background-image: url("https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 }
+
+.item-card-container {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
+
+.item-card {
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 0.5px;
+  border-color: rgba(150,150,150,0.5);
+  margin: 1vw;
+  padding: 1vw;
+}
+
+.image-wrapper {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+#chart {
+  height: 400px;
+  width: 400px;
+}
+
+.landing-image {
+  background-image: url("https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") !important;
+  background-size: cover !important;
+}
+.price-image {
+  background-image: url("https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") !important;
+  background-size: cover !important;
+}
+
+.search-form {
+  margin: 0 auto;
+}

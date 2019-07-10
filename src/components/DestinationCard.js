@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Card, Icon, Image, Modal, Button, Header, Divider, Input, Grid, Segment } from 'semantic-ui-react'
+import { Card, Icon, Image, Modal, Button, Header, Divider, Input, Grid, Segment, Form } from 'semantic-ui-react'
 
 class DestinationCard extends Component {
 
@@ -15,18 +15,23 @@ class DestinationCard extends Component {
       }
     })
     .then(res => res.json())
-    .then(booked => this.props.saveDestinationToUser(booked))
+    .then(booked => {
+      // debugger
+      this.props.saveDestinationToUser(booked)
+    })
     this.props.history.push(`./users/${this.props.destination.id}`)
   }
 
   render() {
+    // console.log(this.props.currentUser);
     // debugger
     const { id, image, location, description, price, timeframe} = this.props.destination
     return (
-
       <Card>
-    <Image src={image} wrapped ui={true} />
-    <Card.Content>
+    <div className="image-wrapper">
+    <Image src={image}/>
+    </div>
+    <Card.Content textAlign="center">
       <Card.Header>{location}</Card.Header>
       <Card.Meta>
         <br />
@@ -57,11 +62,28 @@ class DestinationCard extends Component {
         </Modal>
         <br />
         <br />
-        <Button onClick={this.handleDestinationBuy} positive>Book This trip</Button>
+        {
+          !this.props.currentUser ?
+          "Please log in to book a trip!"
+          :
+          !this.props.currentUser.subscription ?
+          "Please subscribe to Book!"
+          :
+          this.props.currentUser.trips.find(trip => {
+            return trip.destination.id === id
+
+          }) ?
+          "You've already booked this trip"
+          : ( this.props.currentUser.trips.length >= 2
+            ?
+            "You've already booked more than two trips"
+            :
+            <Button onClick={this.handleDestinationBuy} positive>Book This trip</Button>
+          )
+        }
       </Card.Meta>
     </Card.Content>
   </Card>
-
     );
   }
 }

@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Card, Segment, Icon, Comment, CommentGroup, Form, Grid, Header } from 'semantic-ui-react'
 
 import * as am4core from "@amcharts/amcharts4/core";
+import * as am4maps from "@amcharts/amcharts4/maps";
+import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
@@ -11,50 +14,125 @@ class CreateYourTrip extends Component {
 
 
   componentDidMount() {
-    let chart = am4core.create("chartdiv", am4charts.XYChart);
+  var chart = am4core.create("chartdiv", am4maps.MapChart);
 
-    chart.paddingRight = 20;
+chart.geodata = am4geodata_worldLow;
 
-    let data = [];
-    let visits = 10;
-    for (let i = 1; i < 366; i++) {
-      visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-      data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
-    }
+// Set projection
+chart.projection = new am4maps.projections.NaturalEarth1();
 
-    chart.data = data;
+// Create map polygon series
+var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
-    let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    dateAxis.renderer.grid.template.location = 0;
+// Make map load polygon (like country names) data from GeoJSON
+polygonSeries.useGeodata = true;
 
-    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.tooltip.disabled = true;
-    valueAxis.renderer.minWidth = 35;
+// Configure series
+var polygonTemplate = polygonSeries.mapPolygons.template;
+polygonTemplate.tooltipText = "{name}";
+polygonTemplate.fill = am4core.color("#00BFFF");
 
-    let series = chart.series.push(new am4charts.LineSeries());
-    series.dataFields.dateX = "date";
-    series.dataFields.valueY = "value";
+// Create hover state and set alternative fill color
+var hs = polygonTemplate.states.create("hover");
+hs.properties.fill = am4core.color("#367B25");
 
-    series.tooltipText = "{valueY.value}";
-    chart.cursor = new am4charts.XYCursor();
+// Remove Antarctica
+polygonSeries.exclude = ["AQ"];
 
-    let scrollbarX = new am4charts.XYChartScrollbar();
-    scrollbarX.series.push(series);
-    chart.scrollbarX = scrollbarX;
+polygonSeries.data = [{
+  "id": "US",
+  "name": "United States",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "ES",
+  "name": "Spain",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "GR",
+  "name": "Germany",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "PT",
+  "name": "Portugal",
+  "value": 100,
+  "fill": am4core.color("#5C5CFF")
+}, {
+  "id": "CZ",
+  "name": "Czech Republic",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "IS",
+  "name": "Iceland",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "GB",
+  "name": "United Kingdom",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "NL",
+  "name": "Netherlands",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "GE",
+  "name": "Georgia",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "BE",
+  "name": "Belgium",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "DK",
+  "name": "Denmark",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "GR",
+  "name": "Greece",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "HU",
+  "name": "Hungary",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "IT",
+  "name": "Italy",
+  "value": 100,
+  "fill": am4core.color("#F05C5C")
+}, {
+  "id": "FR",
+  "name": "France",
+  "value": 50,
+  "fill": am4core.color("#5C5CFF")
+}];
 
+polygonTemplate.propertyFields.fill = "fill";
     this.chart = chart;
   }
 
   componentWillUnmount() {
-    if (this.chart) {
-      this.chart.dispose();
+    if (this.map) {
+      this.map.dispose();
     }
   }
 
 
   render() {
     return (
+      <>
+    <Header>Welcome</Header>
     <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+    </>
     );
   }
 

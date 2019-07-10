@@ -35,14 +35,10 @@ class DestinationShowPage extends Component {
     })
     .then(res => res.json())
     .then(comment => this.props.saveCommentToDestination(comment))
+    this.setState({
+      content: ""
+    })
   }
-
-  // const mapDest = () => {
-  //   this.props.destinations.map(destination => {
-  //     return destination
-  //   })
-  // }
-  // this.props.history.push(`./users/${this.props.destination.id}`)
 
   render() {
     // debugger
@@ -58,58 +54,78 @@ class DestinationShowPage extends Component {
       return destination.id === destinationShowId
     })
 
-    const { location, image, description, comments } = destinationOnlyShowPage
+    const { location, image, description, comments, users, timeframe } = destinationOnlyShowPage
     // console.log(destinationOnlyShowPage);
     return (
 
       <div>
-      <Segment>
+
       <Grid columns={2} stackable className="fill-content">
         <Grid.Row>
           <Grid.Column width={1} />
           <Grid.Column width={7}>
             <Segment>
-              <Header as="h1">{location}</Header>
+
               <Image className="centered" src={image} size="large"  />
               <Card fluid>
                 <Card.Content>
                   <Card.Header>{location}</Card.Header>
-                  <Card.Meta>Joined in 2019</Card.Meta>
-                  <Card.Description>Desc</Card.Description>
-                  <Card.Description>more descr</Card.Description>
 
-                  <br />
+                  <Card.Description as="h2">Next Trip</Card.Description>
+                  <Card.Description as="h4">{timeframe}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <a>
+
                     <Icon name="plane" />
-                    10 Trips Accomplished
-                  </a>
+                    {
+                      users.map(user => {
+                        return <li>{user.username} Booked </li>
+                      })
+                    }
+
                 </Card.Content>
               </Card>
             </Segment>
           </Grid.Column>
-        <Grid.Column>
+        <Grid.Column textAlign="left">
+            <h2>Your Next Trip to {location}</h2>
+            <br />
+            <br />
+            <li><Icon name="plane" size="small"/> Round Airplain Ticket</li>
+            <li><Icon name="hotel" size="small"/> 3* Hotel</li>
+            <li><Icon name="time" size="small"/> 3 - 4 Days</li>
+            <br />
+
+            <h3>{description}</h3>
             <Segment>
-              <h3>{description}</h3>
-            </Segment>
+              <input type="date">
+              </input>
+              </Segment>
         </Grid.Column>
             </Grid.Row>
         </Grid>
-        </Segment>
 
 
 
-          <Header as='h3' dividing>
+          <Header as='h3'>
             Comments
           </Header>
-          <Form reply>
-            <Form.TextArea onChange={this.handleChange} name = "content"/>
-            <Button onClick={this.handleComment} content='Add Reply' labelPosition='left' icon='edit' primary />
-          </Form>
+          {
+            this.props.currentUser ?
+            <Form reply>
+              <Grid centered>
+                <Form.TextArea onChange={this.handleChange} name = "content" value={this.state.content}/>
+              </Grid>
+              <br />
+              <Button onClick={this.handleComment} content='Comment' labelPosition='left' icon='edit' primary />
+            </Form>
+            :
+            null
+          }
+
           {
             comments.map(comment => {
-              return <CommentComponent comment={comment}/>
+              return <CommentComponent comment={comment} currentUser={this.props.currentUser}/>
             })
           }
       </div>

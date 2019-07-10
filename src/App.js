@@ -58,7 +58,7 @@ class App extends Component {
             <Route path="/destinations" component={DestinationContainer} />
             <Route path="/pricing" component={PricingComponent} />
             <Route path="/show/:id" component={DestinationShowPage} />
-            <Route path="/home" component={HomePage} />
+            <Route path="/(home|)/" component={HomePage} />
             <Route path="/how" component={HowItWorks} />
             <Route path="/create" component={CreateYourTrip} />
 						<Route path="/login" render={(routerProps) => {

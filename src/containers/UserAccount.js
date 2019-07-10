@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PaymentContainer from './PaymentContainer'
+import Moment from 'react-moment';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { Grid, Segment, Header, Image, Card, Icon, Button, Divider, Radio, Form, Modal } from 'semantic-ui-react';
+import { Grid, Segment, Header, Image, Card, Icon, Button, Divider, Radio, Form, Modal, Progress } from 'semantic-ui-react';
 
+let currentDate = new Date().toISOString().slice(0, 10);
 
 class UserAccount extends Component {
   state = {
@@ -36,11 +38,22 @@ class UserAccount extends Component {
       }) )
   }
 
+  handleDelete = (deletingTrip) => {
+    fetch(`http://localhost:3000/trips/${deletingTrip.id}`, {
+    method: 'Delete',
+    headers: {
+      'Authorization': `Bearer ${localStorage.token}`
+      }
+    })
+    this.props.deleteDestinationFromUser(deletingTrip)
+  }
+
+
 
   render() {
+    console.log(currentDate);
     // const { first_name, last_name, email, username } = this.props
     // console.log(this.state.tripsArr);
-    console.log(this.props.currentUser);
     return (
 
     <Grid columns={2} stackable className="fill-content">
@@ -92,14 +105,8 @@ class UserAccount extends Component {
 
           }
             <Divider />
-          </Segment>
 
-          <Segment>
-          <Header as="h4">Pause Subscription</Header>
-
-          <Radio toggle />
-          <Divider />
-          <Header as="h4">Current Trips</Header>
+          <Header as="h2">Current Trips</Header>
             <Grid columns={1} divided>
       <Grid.Row>
         <Grid.Column>
@@ -108,9 +115,12 @@ class UserAccount extends Component {
             this.props.currentUser !== null ?
             this.props.currentUser.trips.map(trip => {
               return <div>
-              <p>{trip.destination.location}</p>
+              <h3>{trip.destination.location}</h3>
               <Image src={trip.destination.image} />
-              <Button onClick={this.handleDelete} negative> delete trip</Button>
+                <Progress progress='value' value={2} total={3} color='yellow' active>
+                  Days Until Your Trip
+                </Progress>
+              <Button onClick={()=> this.handleDelete(trip)} secondary>Cancel Trip</Button>
               </div>
             })
             :
@@ -147,6 +157,9 @@ function mapDispatchToProps(dispatch) {
     },
     setChosenSubscription:(subType) => {
       dispatch({ type: "CHOOSE_SUBSCRIPTION_TYPE", payload: subType})
+    },
+    deleteDestinationFromUser:(trip) => {
+      dispatch({ type: "DELETE_DESTINATION_FROM_USER", payload: trip})
     }
   }
 }

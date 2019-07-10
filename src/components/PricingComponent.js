@@ -7,44 +7,60 @@ class PricingComponent extends Component {
   handleClickSolo = (event) => {
     console.log("Which one was clicked", this.props.currentUser);
     // run fetch to subscribe user
-    fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${localStorage.token}`
-      },
-      body: JSON.stringify({
-        subscription_id: 12
+    if (this.props.currentUser.subscription && this.props.currentUser.subscription.sub_type === "solo") {
+      alert("You are already subscribed to this plan.")
+    } else {
+      fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({
+          subscription_id: 12
+        })
       })
-    })
-    .then(res => res.json())
-    .then(data => this.props.setCurrentUser(data))
+      .then(res => res.json())
+      .then(data => {
+        this.props.setCurrentUser(data)
+        alert("You are now subscribed!")
+      })
+    }
 
   }
 
   handleClickGroup = (event) => {
     console.log("Which one was clicked", this.props.currentUser);
     // run fetch to subscribe user
-    fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${localStorage.token}`
-      },
-      body: JSON.stringify({
-        subscription_id: 13
+    if (this.props.currentUser.subscription && this.props.currentUser.subscription.sub_type === "group") {
+      alert("You are already subscribed to this plan.")
+    } else {
+      fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({
+          subscription_id: 13
+        })
       })
-    })
-    .then(res => res.json())
-    .then(data => this.props.setCurrentUser(data))
+      .then(res => res.json())
+      .then(data => {
+        this.props.setCurrentUser(data)
+        alert("You are now subscribed!")
+      })
+    }
   }
 
   render() {
     // console.log(this.props.chooseSubscription[0]);
+    console.log(this.props.currentUser);
     return (
-      <div className='ui container codepen-margin'>
+      <div className="ui price-image fluid container">
+      <div className='ui container'>
    <div className="ui grid">
       <div className="five wide column">
          <div className="ui raised segments">
@@ -103,11 +119,14 @@ class PricingComponent extends Component {
                <p> Travel Duration - 3 - 4 Days  </p>
             </div>
          </div>
+
         <div onClick={this.handleClickSolo} className="ui green fluid button">
           Subscribe
         </div>
       </div>
    </div>
+   </div>
+
 </div>
     );
   }
