@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { Card, Segment, Icon, Comment, Form, Grid, Header, Container } from 'semantic-ui-react'
+import { Card, Segment, Icon, Comment, CommentGroup, Form, Grid, Header } from 'semantic-ui-react'
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
@@ -10,13 +10,11 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 am4core.useTheme(am4themes_animated);
 
-class HowItWorks extends Component {
+class PieChartContainer extends Component {
 
   componentDidMount() {
 
   var chart = am4core.create("chartdiv", am4maps.MapChart);
-
-  // am4core.useTheme(am4themes_animated);
 
   var data = [{
       "country": "Dummy",
@@ -297,40 +295,20 @@ class HowItWorks extends Component {
 
 
   render() {
+    console.log(this.props.destination);
     return (
-    <>
-      <div className="ui vertical stripe quote segment">
-        <div className="ui equal width stackable internally celled grid">
-          <div className="center aligned row">
-            <div className="column box">
-              <h1><Icon name="check" size="big"/></h1>
-              <h3> CHOOSE YOUR SUBSCRIPTION</h3>
-              <p>Low cost monthly payments makes travel affordable</p>
-            </div>
-            <div className="column box">
-              <h1><Icon name="pin" size="big"/></h1>
-              <h3>PICK DESTINATION</h3>
-              <p>Our destination packages include Hotel and round trip airplain tickets</p>
-            </div>
-            <div className="column box">
-              <h1><Icon name="plane" size="big"/></h1>
-              <h3>TRAVEL</h3>
-              <p>Book a trip every 4 month</p>
-            </div>
-          </div>
-          </div>
-        </div>
-        <Header color="red">Compare Destination Popularity</Header>
+      <>
+    <Header color="red"> Compare Destination Popularity </Header>
     <div id="chartdiv" style={{ width: "100%", height: "300px" }}></div>
     </>
     );
   }
-}
+  }
 
-function mapStateToProps(state){
+  function mapStateToProps(state){
   return {
     destinations: state.destinations,
+    }
   }
-}
 
-export default connect(mapStateToProps)(HowItWorks);
+  export default connect(mapStateToProps)(PieChartContainer);

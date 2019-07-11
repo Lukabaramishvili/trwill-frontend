@@ -17,6 +17,9 @@ class Navbar extends Component {
                TraWill
                </Link>
              </Menu.Item>
+             <Link className="item" to="/home">
+               Home
+             </Link>
             <Link className="item" to="/how">
               How it Works
             </Link>
@@ -25,9 +28,6 @@ class Navbar extends Component {
             </Link>
             <Link className="item" to="/pricing">
               Pricing
-            </Link>
-            <Link className="item" to="/create">
-              Create Your Travel
             </Link>
             {
               this.props.currentUser

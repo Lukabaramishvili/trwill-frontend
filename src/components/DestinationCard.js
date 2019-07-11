@@ -27,6 +27,7 @@ class DestinationCard extends Component {
     // debugger
     const { id, image, location, description, price, timeframe} = this.props.destination
     return (
+
       <Card>
     <div className="image-wrapper">
     <Image src={image}/>
@@ -36,30 +37,9 @@ class DestinationCard extends Component {
       <Card.Meta>
         <br />
         <Link to={`show/${id}`}>
-          <Button>See More</Button>
+          <Button>See Details</Button>
           </Link>
-          <Modal trigger={<Button>See Details</Button>}>
-          <Modal.Header>{location}</Modal.Header>
-          <Modal.Content image>
-            <Image size='medium' src={image} />
-            <Modal.Description>
-              <Header>Details</Header>
-              <Divider />
-              <p>{description}</p>
-              <Divider />
-              <p>Traveling Period: {timeframe}</p>
-              <br />
-              <Header>Users Traveling in this location</Header>
-              {
-                this.props.destination.users.map(user => {
-                  return <div>
-                    <li>User - {user.username} </li>
-                  </div>
-                })
-              }
-            </Modal.Description>
-          </Modal.Content>
-        </Modal>
+
         <br />
         <br />
         {
@@ -74,9 +54,9 @@ class DestinationCard extends Component {
 
           }) ?
           "You've already booked this trip"
-          : ( this.props.currentUser.trips.length >= 2
+          : ( this.props.currentUser.trips.length >= 3
             ?
-            "You've already booked more than two trips"
+            "You've already booked more than three trips"
             :
             <Button onClick={this.handleDestinationBuy} positive>Book This trip</Button>
           )
@@ -84,6 +64,7 @@ class DestinationCard extends Component {
       </Card.Meta>
     </Card.Content>
   </Card>
+
     );
   }
 }

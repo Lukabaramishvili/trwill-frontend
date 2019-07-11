@@ -169,7 +169,28 @@ border-top: none !important;
   background-image: url("https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") !important;
   background-size: cover !important;
 }
+.destinations-image {
+  background-image: url("https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") !important;
+  background-size: cover !important;
+}
+.how-image {
+  background-image: url("https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") !important;
+  background-size: cover !important;
+}
 
 .search-form {
   margin: 0 auto;
+}
+
+.box{
+  position: relative;
+  max-width: 600px;
+  padding: 50px;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+
+.text-focus-in {
+	-webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }

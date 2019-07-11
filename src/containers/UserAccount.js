@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PaymentContainer from './PaymentContainer'
 import Moment from 'react-moment';
+import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -48,12 +49,17 @@ class UserAccount extends Component {
     this.props.deleteDestinationFromUser(deletingTrip)
   }
 
-
+  giveMeAMoment = (timeframe) => {
+    const a = moment(timeframe.split(" - ")[0])
+    const b = moment(Date.now())
+    return moment.duration(a - b).format("DD")
+  }
 
   render() {
-    console.log(currentDate);
+    console.log(this.props.currentUser);
     // const { first_name, last_name, email, username } = this.props
     // console.log(this.state.tripsArr);
+
     return (
 
     <Grid columns={2} stackable className="fill-content">
@@ -84,7 +90,7 @@ class UserAccount extends Component {
         </Grid.Column>
         <Grid.Column width={7}>
           <Segment>
-            <Header as="h2">Settings</Header>
+            <Header as="h2">Dashboard</Header>
 
             {
 
@@ -99,7 +105,7 @@ class UserAccount extends Component {
             :
 
             <div>
-              <p>Subscription Type: {this.props.currentUser && this.props.currentUser.subscription.sub_type}</p>
+              <h4>Subscription Type: {this.props.currentUser && this.props.currentUser.subscription.sub_type}</h4>
               <Button onClick={this.handlesubscribe} negative>Unsubscribe</Button>
             </div>
 
@@ -117,7 +123,8 @@ class UserAccount extends Component {
               return <div>
               <h3>{trip.destination.location}</h3>
               <Image src={trip.destination.image} />
-                <Progress progress='value' value={2} total={3} color='yellow' active>
+              <b><Icon name="time" size="small"/>{trip.destination.timeframe}</b>
+                <Progress progress='value' value={this.giveMeAMoment(trip.destination.timeframe) } total={90} color='yellow' active>
                   Days Until Your Trip
                 </Progress>
               <Button onClick={()=> this.handleDelete(trip)} secondary>Cancel Trip</Button>

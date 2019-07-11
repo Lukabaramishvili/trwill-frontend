@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 class PricingComponent extends Component {
 
   handleClickSolo = (event) => {
-    console.log("Which one was clicked", this.props.currentUser);
     // run fetch to subscribe user
-    if (this.props.currentUser.subscription && this.props.currentUser.subscription.sub_type === "solo") {
+    if (this.props.currentUser === null){
+      alert("Please Sign in to Subscribe")
+    }else if (this.props.currentUser.subscription && this.props.currentUser.subscription.sub_type === "solo") {
       alert("You are already subscribed to this plan.")
     } else {
       fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
@@ -27,13 +28,13 @@ class PricingComponent extends Component {
         alert("You are now subscribed!")
       })
     }
-
   }
 
   handleClickGroup = (event) => {
-    console.log("Which one was clicked", this.props.currentUser);
     // run fetch to subscribe user
-    if (this.props.currentUser.subscription && this.props.currentUser.subscription.sub_type === "group") {
+    if (this.props.currentUser === null){
+      alert("Please Sign in to Subscribe")
+    }else if (this.props.currentUser.subscription && this.props.currentUser.subscription.sub_type === "group") {
       alert("You are already subscribed to this plan.")
     } else {
       fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
@@ -57,7 +58,7 @@ class PricingComponent extends Component {
 
   render() {
     // console.log(this.props.chooseSubscription[0]);
-    console.log(this.props.currentUser);
+    // console.log(this.props.currentUser);
     return (
       <div className="ui price-image fluid container">
       <div className='ui container'>

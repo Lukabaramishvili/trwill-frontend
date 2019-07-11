@@ -1,7 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import CommentComponent from './CommentComponent'
+import PieChartContainer from './PieChartContainer'
 import { connect } from 'react-redux'
 import { Button, Header, Image, Grid, Card, Segment, Icon, Comment, CommentGroup, Form } from 'semantic-ui-react'
+
+import {
+  DateInput,
+  TimeInput,
+  DateTimeInput,
+  DatesRangeInput
+} from 'semantic-ui-calendar-react';
 
 class DestinationShowPage extends Component {
 
@@ -41,8 +49,6 @@ class DestinationShowPage extends Component {
   }
 
   render() {
-    // debugger
-    // const destinationShowId = this.props.history.location.pathname.split("/")[2]
     const destinationShowId = parseInt(this.props.match.params.id)
     console.log(destinationShowId)
 
@@ -55,7 +61,6 @@ class DestinationShowPage extends Component {
     })
 
     const { location, image, description, comments, users, timeframe } = destinationOnlyShowPage
-    // console.log(destinationOnlyShowPage);
     return (
 
       <div>
@@ -76,7 +81,7 @@ class DestinationShowPage extends Component {
                 </Card.Content>
                 <Card.Content extra>
 
-                    <Icon name="plane" />
+                    <Icon name="users" />
                     {
                       users.map(user => {
                         return <li>{user.username} Booked </li>
@@ -88,23 +93,24 @@ class DestinationShowPage extends Component {
             </Segment>
           </Grid.Column>
         <Grid.Column textAlign="left">
+
             <h2>Your Next Trip to {location}</h2>
             <br />
             <br />
-            <li><Icon name="plane" size="small"/> Round Airplain Ticket</li>
+            <li><Icon name="plane" size="small"/> Round Airplane Ticket</li>
             <li><Icon name="hotel" size="small"/> 3* Hotel</li>
             <li><Icon name="time" size="small"/> 3 - 4 Days</li>
             <br />
+            <br />
+            <br />
+            <br />
 
             <h3>{description}</h3>
-            <Segment>
-              <input type="date">
-              </input>
-              </Segment>
+            <br />
         </Grid.Column>
             </Grid.Row>
         </Grid>
-
+         <PieChartContainer  />
 
 
           <Header as='h3'>

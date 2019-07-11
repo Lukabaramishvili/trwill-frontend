@@ -12,12 +12,14 @@ import PricingComponent from './components/PricingComponent'
 import DestinationShowPage from './components/DestinationShowPage'
 import HomePage from './components/HomePage'
 import HowItWorks from './components/HowItWorks'
-import CreateYourTrip from './components/CreateYourTrip'
 import { connect } from 'react-redux';
 
 
 class App extends Component {
 
+	state = {
+		filter: ""
+	}
 
 	componentDidMount(){
 		const token = localStorage.getItem("token")
@@ -47,7 +49,20 @@ class App extends Component {
 		})
 	}
 
+		handleFilter = (newInputValue) => {
+		this.setState({
+			filter: newInputValue
+		})
+	}
+
+		filterTheDestinations = () => {
+				return this.props.destinations.filter(destination => {
+				return destination.location.toLowerCase().includes(this.state.filter.toLowerCase())
+			})
+  	}
+
   render() {
+		// console.log(this.filterTheDestinations());
     // console.log(this.props.currentUser);
     return (
       <Grid>
@@ -55,12 +70,15 @@ class App extends Component {
 				<Grid.Row centered>
 					<Switch>
             <Route path="/users/:id" component={UserAccount} />
-            <Route path="/destinations" component={DestinationContainer} />
+            <Route path="/destinations" render={(routerProps) => (
+								<div>
+									<DestinationContainer filterTheDestinations={this.filterTheDestinations()} handleFilter={this.handleFilter} {...routerProps} />
+								</div>
+							)} />
             <Route path="/pricing" component={PricingComponent} />
             <Route path="/show/:id" component={DestinationShowPage} />
             <Route path="/(home|)/" component={HomePage} />
             <Route path="/how" component={HowItWorks} />
-            <Route path="/create" component={CreateYourTrip} />
 						<Route path="/login" render={(routerProps) => {
 							return <LoginForm {...routerProps}/>
 						}} />
