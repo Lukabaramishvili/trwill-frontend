@@ -34,7 +34,7 @@ createUser = () => {
     if (response.errors){
       alert(response.errors)
     } else {
-      localStorage.setItem("token", response.token)
+      localStorage.setItem("token", response.jwt)
       this.props.setCurrentUser(response)
       this.props.history.push(`/users/${response.user.id}`)
     }

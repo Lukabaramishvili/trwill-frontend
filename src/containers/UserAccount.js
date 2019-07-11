@@ -15,7 +15,6 @@ class UserAccount extends Component {
   }
 
   handlesubscribe = (event) => {
-    console.log("Which one was clicked", this.props.currentUser);
     fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
       method: 'PATCH',
       headers: {
@@ -55,8 +54,9 @@ class UserAccount extends Component {
     return moment.duration(a - b).format("DD")
   }
 
+
   render() {
-    console.log(this.props.currentUser);
+    // console.log(this.props.currentUser);
     // const { first_name, last_name, email, username } = this.props
     // console.log(this.state.tripsArr);
 
@@ -124,7 +124,7 @@ class UserAccount extends Component {
               <h3>{trip.destination.location}</h3>
               <Image src={trip.destination.image} />
               <b><Icon name="time" size="small"/>{trip.destination.timeframe}</b>
-                <Progress progress='value' value={this.giveMeAMoment(trip.destination.timeframe) } total={90} color='yellow' active>
+                <Progress progress='value' value={this.giveMeAMoment(trip.destination.timeframe)} total={100} color='yellow' active>
                   Days Until Your Trip
                 </Progress>
               <Button onClick={()=> this.handleDelete(trip)} secondary>Cancel Trip</Button>

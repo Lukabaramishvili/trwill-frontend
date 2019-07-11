@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { Card, Segment, Icon, Comment, Form, Grid, Header, Container } from 'semantic-ui-react'
+import { Icon, Header } from 'semantic-ui-react'
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
@@ -202,7 +202,7 @@ class HowItWorks extends Component {
       // tooltipY and tooltipY are in the middle of the slice, so we use them to avoid extra calculations
       var targetSlicePoint = am4core.utils.spritePointToSvg({ x: targetSlice.tooltipX, y: targetSlice.tooltipY }, targetSlice);
 
-      if (targetSlice == slice1) {
+      if (targetSlice === slice1) {
           if (targetSlicePoint.x > container.pixelWidth / 2) {
               var value = dataItem1.value;
 
