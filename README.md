@@ -8,7 +8,7 @@ Snapshots:
 
 Landing Page
 
-![land](https://user-images.githubusercontent.com/45564632/66598332-cecd4600-eb6e-11e9-9ac5-f95848338b1f.gif)
+![Oct-10-2019 15-22-51](https://user-images.githubusercontent.com/45564632/66599729-ea861b80-eb71-11e9-8a2a-d5520ccf5043.gif)
 
 How it Works Page
 
