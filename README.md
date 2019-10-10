@@ -7,24 +7,31 @@ See Backend repo :  (https://github.com/Lukabaramishvili/trWill-backend)
 Snapshots: 
 
 Landing Page
+
 ![land](https://user-images.githubusercontent.com/45564632/66598332-cecd4600-eb6e-11e9-9ac5-f95848338b1f.gif)
 
 How it Works Page
+
 ![how](https://user-images.githubusercontent.com/45564632/66598419-01773e80-eb6f-11e9-8eac-9a531732d5d4.gif)
 
 Sign Up 
+
 ![singup](https://user-images.githubusercontent.com/45564632/66598471-1eac0d00-eb6f-11e9-80bc-d3786e4291a2.gif)
 
 Subscribe
+
 ![subscribe](https://user-images.githubusercontent.com/45564632/66598548-4307e980-eb6f-11e9-8164-786004feca27.gif)
 
 Destinations Page
+
 ![destinations](https://user-images.githubusercontent.com/45564632/66598605-5fa42180-eb6f-11e9-97d2-c36ba9015196.gif)
 
 Show Page
+
 ![show Page](https://user-images.githubusercontent.com/45564632/66598679-88c4b200-eb6f-11e9-9121-a5107b51dcb5.gif)
 
 Account Page
+
 ![book](https://user-images.githubusercontent.com/45564632/66598715-a134cc80-eb6f-11e9-8820-c8af4041de5b.gif)
 
 ## Getting Started
