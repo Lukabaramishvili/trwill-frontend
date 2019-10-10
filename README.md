@@ -1,68 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# traWill
 
-## Available Scripts
+traWill is a subscription based traveling app that makes travel affordable for everyone. The idea was born while building my first fullstack application. The app lets users to SignUp and subscibe to two different types of plans. User can book a trip or cancle existing trip that was previousely booked. User can also view and search available destinations and see the details of each location. The app gives users opportunity to compare destinations' popularity by utilizing drag and drop functionality. Finally, user can leave a comment on every destination info page and also see other users who travel in that location. 
+ 
+See Backend repo :  (https://github.com/Lukabaramishvili/trWill-backend)
 
-In the project directory, you can run:
+Snapshots: 
 
-### `npm start`
+Landing Page
+![land](https://user-images.githubusercontent.com/45564632/66598332-cecd4600-eb6e-11e9-9ac5-f95848338b1f.gif)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+How it Works Page
+![how](https://user-images.githubusercontent.com/45564632/66598419-01773e80-eb6f-11e9-8eac-9a531732d5d4.gif)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Sign Up 
+![singup](https://user-images.githubusercontent.com/45564632/66598471-1eac0d00-eb6f-11e9-80bc-d3786e4291a2.gif)
 
-### `npm test`
+Subscribe
+![subscribe](https://user-images.githubusercontent.com/45564632/66598548-4307e980-eb6f-11e9-8164-786004feca27.gif)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Destinations Page
+![destinations](https://user-images.githubusercontent.com/45564632/66598605-5fa42180-eb6f-11e9-97d2-c36ba9015196.gif)
 
-### `npm run build`
+Show Page
+![show Page](https://user-images.githubusercontent.com/45564632/66598679-88c4b200-eb6f-11e9-9121-a5107b51dcb5.gif)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Account Page
+![book](https://user-images.githubusercontent.com/45564632/66598715-a134cc80-eb6f-11e9-8820-c8af4041de5b.gif)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Ruby, Rails and Postresql have to be installed on your computer.
+To install do the following in your Terminal:
+1. Ruby -  brew install rbenv ruby-build
+2. Rails - gem install rails
+3 Postgresql - brew install postgresql
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Languages and Tools Used:
 
-## Learn More
+* React+Redux front-end
+* Ruby on Rails back-end
+* Vanilla CSS and Semantic
+* Postgresql database
+* Bcrypt
+* JWT 
+* amChart.js 
+* moment.js
+* Seed Data
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Authors
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Luka Baramishvili
 
-### Code Splitting
+## Acknowledgments
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Flatiron School
