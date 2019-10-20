@@ -4,6 +4,8 @@ traWill is a subscription based traveling app that makes travel affordable for e
  
 See Backend repo :  (https://github.com/Lukabaramishvili/trWill-backend)
 
+Demo Video: https://www.youtube.com/watch?v=kcZfK38G0sQ&feature=youtu.be
+
 Snapshots: 
 
 Landing Page
