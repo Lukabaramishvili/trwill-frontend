@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import { connect } from 'react-redux'
-import { Card, Segment, Icon, Comment, CommentGroup, Form, Button } from 'semantic-ui-react'
+import { Card, Comment, CommentGroup, Button } from 'semantic-ui-react'
 
 class CommentComponent extends Component {
 

@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Card, Segment, Icon, Comment, CommentGroup, Form, Grid, Header } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
-import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
@@ -223,11 +222,11 @@ class PieChartContainer extends Component {
       if (targetSlice == slice2) {
           if (targetSlicePoint.x < container.pixelWidth / 2) {
 
-              var value = dataItem2.value;
+               value = dataItem2.value;
 
               dataItem2.hide();
 
-              var animation = slice2.animate([{ property: "x", to: series1CenterConverted.x }, { property: "y", to: series1CenterConverted.y }], 400);
+               animation = slice2.animate([{ property: "x", to: series1CenterConverted.x }, { property: "y", to: series1CenterConverted.y }], 400);
               animation.events.on("animationprogress", function (event) {
                   slice2.hideTooltip();
               })
@@ -295,7 +294,6 @@ class PieChartContainer extends Component {
 
 
   render() {
-    console.log(this.props.destination);
     return (
       <>
     <Header color="red"> Compare Destination Popularity </Header>
@@ -303,7 +301,7 @@ class PieChartContainer extends Component {
     </>
     );
   }
-  }
+}
 
   function mapStateToProps(state){
   return {

@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import PaymentContainer from './PaymentContainer'
-import Moment from 'react-moment';
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { Grid, Segment, Header, Image, Card, Icon, Button, Divider, Radio, Form, Modal, Progress } from 'semantic-ui-react';
-
-let currentDate = new Date().toISOString().slice(0, 10);
+import { Grid, Segment, Header, Image, Card, Icon, Button, Divider, Progress } from 'semantic-ui-react';
 
 class UserAccount extends Component {
   state = {
@@ -56,12 +52,7 @@ class UserAccount extends Component {
 
 
   render() {
-    // console.log(this.props.currentUser);
-    // const { first_name, last_name, email, username } = this.props
-    // console.log(this.state.tripsArr);
-
     return (
-
     <Grid columns={2} stackable className="fill-content">
       <Grid.Row>
         <Grid.Column width={1} />
@@ -80,10 +71,10 @@ class UserAccount extends Component {
                 <Button>Payment Method</Button>
               </Card.Content>
               <Card.Content extra>
-                <a>
+                <>
                   <Icon name="plane" />
                   10 Trips Accomplished
-                </a>
+                </>
               </Card.Content>
             </Card>
           </Segment>
@@ -133,7 +124,6 @@ class UserAccount extends Component {
             :
             null
           }
-
         </Grid.Column>
       </Grid.Row>
        </Grid>

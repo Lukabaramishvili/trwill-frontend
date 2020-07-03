@@ -1,9 +1,7 @@
-import React, { Component, Fragment } from 'react';
-import DestinationCard from './DestinationCard'
-import { Card, Segment, Grid, Input, Divider, Form } from 'semantic-ui-react'
-import { connect } from 'react-redux'
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import React, { Component } from 'react';
+import DestinationCard from './DestinationCard';
+import { Card, Segment, Grid, Input, Form, Container } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
 class DestinationContainer extends Component {
 
@@ -30,6 +28,7 @@ class DestinationContainer extends Component {
   render() {
     return (
       <Grid columns={2} stackable className="fill-content">
+        <Container>
         <div className="search-form">
           <Form onSubmit={this.handleSubmit}>
             <Form.Field>
@@ -48,6 +47,7 @@ class DestinationContainer extends Component {
       }
       </Card.Group>
       </Segment>
+      </Container>
     </Grid>
     );
   }
@@ -59,13 +59,5 @@ function mapStateToProps(state){
     destinations: state.destinations
   }
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     getDestinationsList:(destinationArray) => {
-//       dispatch({ type: "GET_DESTINATION_ARR", payload: destinationArray })
-//     }
-//   }
-// }
 
 export default connect(mapStateToProps)(DestinationContainer);

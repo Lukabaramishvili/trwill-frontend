@@ -1,15 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import CommentComponent from './CommentComponent'
 import PieChartContainer from './PieChartContainer'
 import { connect } from 'react-redux'
-import { Button, Header, Image, Grid, Card, Segment, Icon, Comment, CommentGroup, Form } from 'semantic-ui-react'
-
-import {
-  DateInput,
-  TimeInput,
-  DateTimeInput,
-  DatesRangeInput
-} from 'semantic-ui-calendar-react';
+import { Button, Header, Image, Grid, Card, Segment, Icon, Form } from 'semantic-ui-react';
 
 class DestinationShowPage extends Component {
 

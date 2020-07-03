@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'semantic-ui-react'
-import { connect } from 'react-redux'
+import { Form, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
 class LoginForm extends Component {
   state = {
@@ -45,16 +45,16 @@ class LoginForm extends Component {
     // console.log(this.state);
     return (
       <Form onSubmit={this.handleSubmit}>
-  <Form.Field>
-    <label>Username</label>
-    <input onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
-  </Form.Field>
-  <Form.Field>
-    <label>Password</label>
-    <input onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder='Password' />
-  </Form.Field>
-  <Button type='submit'>Submit</Button>
-</Form>
+        <Form.Field>
+          <label>Username</label>
+          <input onChange={this.handleChange} name="username" value={this.state.username} placeholder='Username' />
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
+          <input onChange={this.handleChange} type="password" name="password" value={this.state.password} placeholder='Password' />
+        </Form.Field>
+        <Button type='submit'>Submit</Button>
+      </Form>
     );
   }
 

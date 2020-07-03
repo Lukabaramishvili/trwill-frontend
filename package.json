@@ -6,6 +6,7 @@
     "@amcharts/amcharts4": "^4.5.3",
     "@amcharts/amcharts4-geodata": "^4.1.6",
     "chart.js": "^2.8.0",
+    "country-list": "^2.2.0",
     "eslint-plugin-import": "^2.18.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",

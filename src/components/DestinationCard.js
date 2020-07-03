@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Card, Icon, Image, Modal, Button, Header, Divider, Input, Grid, Segment, Form } from 'semantic-ui-react'
+import { Card, Image, Button, } from 'semantic-ui-react'
 
 class DestinationCard extends Component {
 
@@ -16,54 +16,51 @@ class DestinationCard extends Component {
     })
     .then(res => res.json())
     .then(booked => {
-      // debugger
       this.props.saveDestinationToUser(booked)
     })
     this.props.history.push(`./users/${this.props.destination.id}`)
   }
 
   render() {
-    // console.log(this.props.currentUser);
-    // debugger
-    const { id, image, location, description, price, timeframe} = this.props.destination
+    const { id, image, location } = this.props.destination
     return (
 
-      <Card>
-    <div className="image-wrapper">
-    <Image src={image}/>
-    </div>
-    <Card.Content textAlign="center">
-      <Card.Header>{location}</Card.Header>
-      <Card.Meta>
-        <br />
-        <Link to={`show/${id}`}>
-          <Button>See Details</Button>
+    <Card>
+        <div className="image-wrapper">
+        <Image src={image}/>
+        </div>
+      <Card.Content textAlign="center">
+        <Card.Header>{location}</Card.Header>
+        <Card.Meta>
+          <br />
+          <Link to={`show/${id}`}>
+            <Button>See Details</Button>
           </Link>
 
-        <br />
-        <br />
-        {
-          !this.props.currentUser ?
-          "Please log in to book a trip!"
-          :
-          !this.props.currentUser.subscription ?
-          "Please subscribe to Book!"
-          :
-          this.props.currentUser.trips.find(trip => {
-            return trip.destination.id === id
-
-          }) ?
-          "You've already booked this trip"
-          : ( this.props.currentUser.trips.length >= 3
-            ?
-            "You've already booked more than three trips"
+          <br />
+          <br />
+          {
+            !this.props.currentUser ?
+            "Please log in to book a trip!"
             :
-            <Button onClick={this.handleDestinationBuy} positive>Book This trip</Button>
-          )
-        }
-      </Card.Meta>
-    </Card.Content>
-  </Card>
+            !this.props.currentUser.subscription ?
+            "Please subscribe to Book!"
+            :
+            this.props.currentUser.trips.find(trip => {
+              return trip.destination.id === id
+
+            }) ?
+            "You've already booked this trip"
+            : ( this.props.currentUser.trips.length >= 3
+              ?
+              "You've already booked more than three trips"
+              :
+              <Button onClick={this.handleDestinationBuy} positive>Book This trip</Button>
+            )
+          }
+        </Card.Meta>
+      </Card.Content>
+    </Card>
 
     );
   }
