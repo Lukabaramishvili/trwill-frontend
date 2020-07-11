@@ -15,7 +15,6 @@ class LoginForm extends Component {
   }
 
   handleSubmit = () => {
-    console.log("LOGGING IN", this.state);
     fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
@@ -28,12 +27,9 @@ class LoginForm extends Component {
     })
     .then(res => res.json())
     .then(response => {
-      // debugger
 			if (response.errors) {
 				alert(response.errors)
 			} else {
-				// response is the user object
-				// console.log("This is the response", response)
 				localStorage.setItem("token", response.jwt)
 				this.props.setCurrentUser(response)
 				this.props.history.push(`/users/${response.user.id}`)
@@ -42,7 +38,6 @@ class LoginForm extends Component {
   }
 
   render() {
-    // console.log(this.state);
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
