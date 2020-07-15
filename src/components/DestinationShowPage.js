@@ -55,9 +55,7 @@ class DestinationShowPage extends Component {
 
     const { location, image, description, comments, users, timeframe } = destinationOnlyShowPage
     return (
-
       <div>
-
       <Grid columns={2} stackable className="fill-content">
         <Grid.Row>
           <Grid.Column width={1} />
