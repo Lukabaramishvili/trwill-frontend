@@ -10,7 +10,7 @@ class Navbar extends Component {
     return (
       <Grid.Row>
         <Grid.Column width={16}>
-          <Menu secondary>
+          <Menu stackable>
           <Menu.Item as='a' header>
             <Link to="/home">
                <Image size='mini' src='../trawill-logo.png' style={{ marginRight: '1.5em' }} />

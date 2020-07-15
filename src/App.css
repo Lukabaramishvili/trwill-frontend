@@ -167,7 +167,8 @@ border-top: none !important;
 }
 .price-image {
   background-image: url("https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") !important;
-  background-size: cover !important;
+  background-size: cover;
+  padding-bottom: 30%;
 }
 .destinations-image {
   background-image: url("https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260") !important;
@@ -192,5 +193,5 @@ border-top: none !important;
 
 .text-focus-in {
 	-webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }

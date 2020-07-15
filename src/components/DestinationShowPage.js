@@ -85,24 +85,20 @@ class DestinationShowPage extends Component {
               </Card>
             </Segment>
           </Grid.Column>
-        <Grid.Column textAlign="left">
+          <Grid.Column width={7}>
+          <Segment>
+          <Grid.Column textAlign="center">
 
             <h2>Your Next Trip to {location}</h2>
-            <br />
-            <br />
             <li><Icon name="plane" size="small"/> Round Airplane Ticket</li>
             <li><Icon name="hotel" size="small"/> 3* Hotel</li>
             <li><Icon name="time" size="small"/> 3 - 4 Days</li>
-            <br />
-            <br />
-            <br />
-            <br />
-
             <h3>{description}</h3>
-            <br />
-        </Grid.Column>
-            </Grid.Row>
-        </Grid>
+          </Grid.Column>
+          </Segment>
+          </Grid.Column>
+      </Grid.Row>
+      </Grid>
          <PieChartContainer  />
 
 

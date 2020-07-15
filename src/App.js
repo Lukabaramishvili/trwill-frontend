@@ -56,38 +56,36 @@ class App extends Component {
 	}
 
 		filterTheDestinations = () => {
-				return this.props.destinations.filter(destination => {
-				return destination.location.toLowerCase().includes(this.state.filter.toLowerCase())
-			})
+			return this.props.destinations.filter(destination => {
+			return destination.location.toLowerCase().includes(this.state.filter.toLowerCase())
+		})
   	}
 
   render() {
-		// console.log(this.filterTheDestinations());
-    // console.log(this.props.currentUser);
     return (
-      <Grid>
-				<Navbar logOut={this.props.logOut} />
-				<Grid.Row centered>
-					<Switch>
-            <Route path="/users/:id" component={UserAccount} />
-            <Route path="/destinations" render={(routerProps) => (
-								<div>
-									<DestinationContainer filterTheDestinations={this.filterTheDestinations()} handleFilter={this.handleFilter} {...routerProps} />
-								</div>
-							)} />
-            <Route path="/pricing" component={PricingComponent} />
-            <Route path="/show/:id" component={DestinationShowPage} />
-            <Route path="/(home|)/" component={HomePage} />
-            <Route path="/how" component={HowItWorks} />
-						<Route path="/login" render={(routerProps) => {
-							return <LoginForm {...routerProps}/>
-						}} />
-						<Route path="/signup" render={(routerProps) => {
-							return <SignupForm setCurrentUser={this.props.setCurrentUser} {...routerProps}/>
-						}} />
-					</Switch>
-				</Grid.Row>
-			</Grid>
+    <Grid>
+	<Navbar logOut={this.props.logOut} />
+	<Grid.Row centered>
+	<Switch>
+        <Route path="/users/:id" component={UserAccount} />
+        <Route path="/destinations" render={(routerProps) => (
+			<div>
+				<DestinationContainer filterTheDestinations={this.filterTheDestinations()} handleFilter={this.handleFilter} {...routerProps} />
+			</div>
+			)} />
+        <Route path="/pricing" component={PricingComponent} />
+        <Route path="/show/:id" component={DestinationShowPage} />
+        <Route path="/(home|)/" component={HomePage} />
+        <Route path="/how" component={HowItWorks} />
+		<Route path="/login" render={(routerProps) => {
+			return <LoginForm {...routerProps}/>
+			}} />
+		<Route path="/signup" render={(routerProps) => {
+			return <SignupForm setCurrentUser={this.props.setCurrentUser} {...routerProps}/>
+			}} />
+	</Switch>
+	</Grid.Row>
+	</Grid>
     );
   }
 }
