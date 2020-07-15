@@ -201,7 +201,6 @@ class PieChartContainer extends Component {
 
       if (targetSlice === slice1) {
           if (targetSlicePoint.x > container.pixelWidth / 2) {
-              var value = dataItem1.value;
 
               dataItem1.hide();
 
@@ -221,8 +220,6 @@ class PieChartContainer extends Component {
       }
       if (targetSlice === slice2) {
           if (targetSlicePoint.x < container.pixelWidth / 2) {
-
-               value = dataItem2.value;
 
               dataItem2.hide();
 
