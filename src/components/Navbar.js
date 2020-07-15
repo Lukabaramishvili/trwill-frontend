@@ -11,7 +11,7 @@ class Navbar extends Component {
       <Grid.Row>
         <Grid.Column width={16}>
           <Menu stackable>
-          <Menu.Item as='a' header>
+          <Menu.Item header>
             <Link to="/home">
                <Image size='mini' src='../trawill-logo.png' style={{ marginRight: '1.5em' }} />
                TraWill

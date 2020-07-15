@@ -322,8 +322,8 @@ class HowItWorks extends Component {
 
     <Grid columns='equal'>
       <Grid.Row>
-    <div class="card">
-      <div class="image">
+    <div className="card">
+      <div className="image">
       </div>
     </div>
 
