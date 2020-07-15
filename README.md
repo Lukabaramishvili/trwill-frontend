@@ -3,6 +3,7 @@
 traWill is a subscription based traveling app that makes travel affordable for everyone. The idea was born while building my first fullstack application. The app lets users to SignUp and subscibe to two different types of plans. User can book a trip or cancle existing trip that was previousely booked. User can also view and search available destinations and see the details of each location. The app gives users opportunity to compare destinations' popularity by utilizing drag and drop functionality. Finally, user can leave a comment on every destination info page and also see other users who travel in that location. 
 
 Live Demo: https://trawill.netlify.app/
+
 See Backend repo:  (https://github.com/Lukabaramishvili/trWill-backend)
 
 Demo Video: https://www.youtube.com/watch?v=kcZfK38G0sQ&feature=youtu.be
