@@ -42,7 +42,7 @@ class DestinationContainer extends Component {
       <Card.Group itemsPerRow={3}>
       {
         this.props.filterTheDestinations.map(destination => {
-          return <DestinationCard history={this.props.history} destination={destination}/>
+          return <DestinationCard history={this.props.history} key={destination.id} destination={destination}/>
         })
       }
       </Card.Group>

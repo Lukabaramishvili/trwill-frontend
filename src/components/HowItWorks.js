@@ -179,11 +179,11 @@ class HowItWorks extends Component {
       var slice1;
       var slice2;
 
-      if (series1.slices.indexOf(targetSlice) != -1) {
+      if (series1.slices.indexOf(targetSlice) !== -1) {
           slice1 = targetSlice;
           slice2 = series2.dataItems.getIndex(targetSlice.dataItem.index).slice;
       }
-      else if (series2.slices.indexOf(targetSlice) != -1) {
+      else if (series2.slices.indexOf(targetSlice) !== -1) {
           slice1 = series1.dataItems.getIndex(targetSlice.dataItem.index).slice;
           slice2 = targetSlice;
       }
@@ -221,7 +221,7 @@ class HowItWorks extends Component {
               slice1.animate([{ property: "x", to: 0 }, { property: "y", to: 0 }], 400);
           }
       }
-      if (targetSlice == slice2) {
+      if (targetSlice === slice2) {
           if (targetSlicePoint.x < container.pixelWidth / 2) {
 
                value = dataItem2.value;
