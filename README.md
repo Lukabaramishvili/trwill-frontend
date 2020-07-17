@@ -1,8 +1,9 @@
 # traWill
 
 traWill is a subscription based traveling app that makes travel affordable for everyone. The idea was born while building my first fullstack application. The app lets users to SignUp and subscibe to two different types of plans. User can book a trip or cancle existing trip that was previousely booked. User can also view and search available destinations and see the details of each location. The app gives users opportunity to compare destinations' popularity by utilizing drag and drop functionality. Finally, user can leave a comment on every destination info page and also see other users who travel in that location. 
- 
-See Backend repo :  (https://github.com/Lukabaramishvili/trWill-backend)
+
+
+See Backend repo:  (https://github.com/Lukabaramishvili/trWill-backend)
 
 Demo Video: https://www.youtube.com/watch?v=kcZfK38G0sQ&feature=youtu.be
 
@@ -49,12 +50,11 @@ To install do the following in your Terminal:
 3 Postgresql - brew install postgresql
 
 
-
 ### Languages and Tools Used:
 
 * React+Redux front-end
 * Ruby on Rails back-end
-* Vanilla CSS and Semantic
+* CSS and Semantic
 * Postgresql database
 * Bcrypt
 * JWT 
@@ -65,7 +65,3 @@ To install do the following in your Terminal:
 ## Authors
 
 Luka Baramishvili
-
-## Acknowledgments
-
-Flatiron School
