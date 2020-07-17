@@ -111,7 +111,7 @@ class UserAccount extends Component {
           {
             this.props.currentUser !== null ?
             this.props.currentUser.trips.map(trip => {
-              return <div>
+              return <div key={trip.id}>
               <h3>{trip.destination.location}</h3>
               <Image src={trip.destination.image} />
               <b><Icon name="time" size="small"/>{trip.destination.timeframe}</b>

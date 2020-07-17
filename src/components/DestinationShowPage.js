@@ -75,7 +75,7 @@ class DestinationShowPage extends Component {
                     <Icon name="users" />
                     {
                       users.map(user => {
-                        return <li>{user.username} Booked </li>
+                        return <li key={user.id}>{user.username} Booked </li>
                       })
                     }
 
@@ -118,7 +118,7 @@ class DestinationShowPage extends Component {
 
           {
             comments.map(comment => {
-              return <CommentComponent comment={comment} currentUser={this.props.currentUser}/>
+              return <CommentComponent key={comment.id} comment={comment} currentUser={this.props.currentUser}/>
             })
           }
       </div>

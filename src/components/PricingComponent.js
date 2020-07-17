@@ -19,7 +19,7 @@ class PricingComponent extends Component {
           'Authorization': `Bearer ${localStorage.token}`
         },
         body: JSON.stringify({
-          subscription_id: 12
+          subscription_id: 1
         })
       })
       .then(res => res.json())
@@ -45,7 +45,7 @@ class PricingComponent extends Component {
           'Authorization': `Bearer ${localStorage.token}`
         },
         body: JSON.stringify({
-          subscription_id: 13
+          subscription_id: 2
         })
       })
       .then(res => res.json())
