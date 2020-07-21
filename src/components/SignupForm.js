@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react'
 
+const baseURL = 'https://trawill-backend.herokuapp.com';
+
 class SignupForm extends Component {
 
   state = {
@@ -19,7 +21,7 @@ handleChange = (event) => {
 }
 
 createUser = () => {
-  fetch("http://localhost:3000/users", {
+  fetch(`${baseURL}/users`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

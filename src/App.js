@@ -14,6 +14,7 @@ import HomePage from './components/HomePage'
 import HowItWorks from './components/HowItWorks'
 import { connect } from 'react-redux';
 
+const baseURL = 'https://trawill-backend.herokuapp.com';
 
 class App extends Component {
 
@@ -25,7 +26,7 @@ class App extends Component {
 		const token = localStorage.getItem("token")
 		if(token){
 			// get user data
-			fetch("http://localhost:3000/auto_login", {
+			fetch(`${baseURL}/auto_login`, {
 				headers: {
 					"Authorization": `Bearer ${token}`
 				}
@@ -41,7 +42,7 @@ class App extends Component {
 				}
 			})
 		}
-		fetch('http://localhost:3000/destinations')
+		fetch(`${baseURL}/destinations`)
 		.then(res => res.json())
 		.then(destinations => {
 			// console.log("Fetched destinations in DestinationContainer:", destinations);

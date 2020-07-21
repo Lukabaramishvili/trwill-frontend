@@ -39,7 +39,7 @@ class Navbar extends Component {
                   My Account
                 </Link>
                 <Menu.Item onClick={this.props.logOut}>
-                <Link to={'/login'}> Log out </Link>
+                <Link to={'/home'}> Log out </Link>
                 </Menu.Item>
               </Menu.Menu>
 

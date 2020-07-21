@@ -4,6 +4,8 @@ import PieChartContainer from './PieChartContainer'
 import { connect } from 'react-redux'
 import { Button, Header, Image, Grid, Card, Segment, Icon, Form } from 'semantic-ui-react';
 
+const baseURL = 'https://trawill-backend.herokuapp.com';
+
 class DestinationShowPage extends Component {
 
   state = {
@@ -19,7 +21,7 @@ class DestinationShowPage extends Component {
   handleComment = (event) => {
     const destinationId = this.props.history.location.pathname.split("/")[2]
     event.preventDefault();
-    fetch('http://localhost:3000/comments', {
+    fetch(`${baseURL}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,7 +45,6 @@ class DestinationShowPage extends Component {
 
   render() {
     const destinationShowId = parseInt(this.props.match.params.id)
-    console.log(destinationShowId)
 
     if (this.props.destinations.length === 0) {
       return <h1>Loading...</h1>

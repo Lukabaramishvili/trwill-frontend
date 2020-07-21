@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
+const baseURL = 'https://trawill-backend.herokuapp.com';
+
 class PricingComponent extends Component {
 
   handleClickSolo = (event) => {
@@ -11,7 +13,7 @@ class PricingComponent extends Component {
     }else if (this.props.currentUser.subscription && this.props.currentUser.subscription.sub_type === "solo") {
       alert("You are already subscribed to this plan.")
     } else {
-      fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+      fetch(`${baseURL}/users/${this.props.currentUser.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +39,7 @@ class PricingComponent extends Component {
     }else if (this.props.currentUser.subscription && this.props.currentUser.subscription.sub_type === "group") {
       alert("You are already subscribed to this plan.")
     } else {
-      fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+      fetch(`${baseURL}/users/${this.props.currentUser.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

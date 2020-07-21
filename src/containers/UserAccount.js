@@ -5,13 +5,15 @@ import { connect } from 'react-redux'
 
 import { Grid, Segment, Header, Image, Card, Icon, Button, Divider, Progress } from 'semantic-ui-react';
 
+const baseURL = 'https://trawill-backend.herokuapp.com';
+
 class UserAccount extends Component {
   state = {
     tripsArr: []
   }
 
   handlesubscribe = (event) => {
-    fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+    fetch(`${baseURL}/users/${this.props.currentUser.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -27,7 +29,7 @@ class UserAccount extends Component {
   }
 
   componentDidMount= () => {
-    fetch('http://localhost:3000/trips')
+    fetch(`${baseURL}/trips`)
       .then(res => res.json())
       .then(trips => this.setState({
         tripsArr: trips
@@ -35,7 +37,7 @@ class UserAccount extends Component {
   }
 
   handleDelete = (deletingTrip) => {
-    fetch(`http://localhost:3000/trips/${deletingTrip.id}`, {
+    fetch(`${baseURL}/trips/${deletingTrip.id}`, {
     method: 'Delete',
     headers: {
       'Authorization': `Bearer ${localStorage.token}`

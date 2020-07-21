@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Card, Image, Button, } from 'semantic-ui-react'
 
+const baseURL = 'https://trawill-backend.herokuapp.com';
+
 class DestinationCard extends Component {
 
   handleDestinationBuy = (event) => {
-    fetch(`http://localhost:3000/destinations/${this.props.destination.id}`, {
+    fetch(`${baseURL}/destinations/${this.props.destination.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

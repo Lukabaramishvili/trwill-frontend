@@ -3,11 +3,13 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux'
 import { Card, Comment, CommentGroup, Button } from 'semantic-ui-react'
 
+const baseURL = 'https://trawill-backend.herokuapp.com';
+
 class CommentComponent extends Component {
 
   handleDelete = (event) => {
     console.log(this.props.comment.id)
-    fetch(`http://localhost:3000/comments/${this.props.comment.id}`, {
+    fetch(`${baseURL}/comments/${this.props.comment.id}`, {
     method: 'DELETE',
     headers: {
       'Authorization': `Bearer ${localStorage.token}`

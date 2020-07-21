@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
+const baseURL = 'https://trawill-backend.herokuapp.com';
+
 class LoginForm extends Component {
   state = {
     username: "",
@@ -15,7 +17,7 @@ class LoginForm extends Component {
   }
 
   handleSubmit = () => {
-    fetch('http://localhost:3000/login', {
+    fetch(`${baseURL}/login`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
