@@ -1,39 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import DestinationCard from './DestinationCard';
+import Spinner from '../common/Spinner';
 import { Card, Segment, Grid, Input, Form, Container } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-class DestinationContainer extends Component {
+const DestinationContainer = ({destinations, history}) => {
+  const enteredValue = {
+    filterInput: ''
+  }
+  const [ searchValue, setSearchValue] = useState(enteredValue);
 
-  state = {
-    filterInput: ""
+  const handleSearch = (e) => {
+    setSearchValue({...searchValue, [e.target.name]: e.target.value});
   }
 
-  handleSearch = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+  const filterTheDestinations = destinations.filter(destination => {
+    return destination.location.toLowerCase().includes(searchValue.filterInput.toLowerCase());
+  })
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.handleFilter(this.state.filterInput)
-
-    this.setState({
-      filterInput: ""
-    })
-  }
-
-
-  render() {
     return (
+      destinations.length === 0 ? <Spinner /> : (
       <Grid columns={2} stackable className="fill-content">
         <Container>
         <div className="search-form">
-          <Form onSubmit={this.handleSubmit}>
+          <Form>
             <Form.Field>
               <label>Search Destinations</label>
-              <Input onChange={this.handleSearch} action="search" name="filterInput" placeholder='Search...'  value={this.props.filterInput} />
+              <Input onChange={handleSearch} fluid icon='search' name='filterInput' placeholder='Search...'  value={searchValue.filterInput} />
             </Form.Field>
           </Form>
         </div>
@@ -41,16 +34,16 @@ class DestinationContainer extends Component {
         <br />
       <Card.Group itemsPerRow={3}>
       {
-        this.props.filterTheDestinations.map(destination => {
-          return <DestinationCard history={this.props.history} key={destination.id} destination={destination}/>
+        filterTheDestinations.map(destination => {
+          return <DestinationCard history={history} key={destination.id} destination={destination}/>
         })
       }
       </Card.Group>
       </Segment>
       </Container>
     </Grid>
-    );
-  }
+    )
+  );
 }
 
 function mapStateToProps(state){

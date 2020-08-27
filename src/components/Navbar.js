@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Menu, Image } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 
@@ -12,46 +12,46 @@ class Navbar extends Component {
         <Grid.Column width={16}>
           <Menu stackable>
           <Menu.Item header>
-            <Link to="/home">
+            <NavLink to="/">
                <Image size='mini' src='../trawill-logo.png' style={{ marginRight: '1.5em' }} />
                TraWill
-               </Link>
+               </NavLink>
              </Menu.Item>
-             <Link className="item" to="/home">
+             <NavLink className="item" to="/">
                Home
-             </Link>
-            <Link className="item" to="/how">
+             </NavLink>
+            <NavLink className="item" to="/how">
               How it Works
-            </Link>
-            <Link className="item" to="/destinations">
+            </NavLink>
+            <NavLink className="item" to="/destinations">
               Destinations
-            </Link>
-            <Link className="item" to="/pricing">
+            </NavLink>
+            <NavLink className="item" to="/pricing">
               Pricing
-            </Link>
+            </NavLink>
             {
               this.props.currentUser
 
               ?
 
               <Menu.Menu position="right">
-                <Link className="item" to={`/users/${this.props.currentUser.id}`}>
+                <NavLink className="item" to={`/users/${this.props.currentUser.id}`}>
                   My Account
-                </Link>
+                </NavLink>
                 <Menu.Item onClick={this.props.logOut}>
-                <Link to={'/home'}> Log out </Link>
+                <NavLink to={'/login'}> Log out </NavLink>
                 </Menu.Item>
               </Menu.Menu>
 
               :
 
               <Menu.Menu position="right">
-                <Link className="item" to="/login">
+                <NavLink className="item" to="/login">
                   Login
-                </Link>
-                <Link className="item" to="/signup">
+                </NavLink>
+                <NavLink className="item" to="/signup">
                   Sign Up
-                </Link>
+                </NavLink>
               </Menu.Menu>
 
             }

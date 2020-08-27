@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
@@ -10,18 +10,19 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 am4core.useTheme(am4themes_animated);
 
-class HomePage extends Component {
+const HomePage = () => {
+  const chart = useRef(null);
 
-componentDidMount() {
-  const chart = am4core.create("chartdiv", am4maps.MapChart);
+  useEffect(() => {
+  let x = am4core.create("chartdiv", am4maps.MapChart);
 
-  chart.geodata = am4geodata_worldLow;
+  x.geodata = am4geodata_worldLow;
 
   // Set projection
-  chart.projection = new am4maps.projections.NaturalEarth1();
+  x.projection = new am4maps.projections.NaturalEarth1();
 
   // Create map polygon series
-  const polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+  const polygonSeries = x.series.push(new am4maps.MapPolygonSeries());
 
   // Make map load polygon (like country names) data from GeoJSON
   polygonSeries.useGeodata = true;
@@ -101,18 +102,15 @@ componentDidMount() {
   }];
 
   polygonTemplate.propertyFields.fill = "fill";
-      this.chart = chart;
-    }
 
-    componentWillUnmount() {
-      if (this.map) {
-        this.map.dispose();
-      }
-    }
+  chart.current = x;
+  return () => {
+    x.dispose();
+  }
+}, []);
 
-  render() {
+
     return (
-      <>
       <div className="ui landing-image fluid container">
       <h1 className="ui  header">
          Welcome to Subscription Based Travel
@@ -156,13 +154,10 @@ componentDidMount() {
             </div>
             </div>
           </div>
+        </div>
+      </div>
     </div>
-        </div>
-        </div>
-    </>
-
-    );
-  }
+  )
 }
 
 function mapStateToProps(state){

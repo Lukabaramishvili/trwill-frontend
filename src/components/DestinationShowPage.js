@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CommentComponent from './CommentComponent'
-import PieChartContainer from './PieChartContainer'
+import CommentComponent from './CommentComponent';
+import PieChartContainer from './PieChartContainer';
+import Spinner from '../common/Spinner';
 import { connect } from 'react-redux'
 import { Button, Header, Image, Grid, Card, Segment, Icon, Form } from 'semantic-ui-react';
 
@@ -47,7 +48,7 @@ class DestinationShowPage extends Component {
     const destinationShowId = parseInt(this.props.match.params.id)
 
     if (this.props.destinations.length === 0) {
-      return <h1>Loading...</h1>
+      return <Spinner />
     }
 
     let destinationOnlyShowPage = this.props.destinations.find(destination => {
@@ -98,7 +99,7 @@ class DestinationShowPage extends Component {
           </Grid.Column>
       </Grid.Row>
       </Grid>
-         <PieChartContainer  />
+         <PieChartContainer destinations={this.props.destinations}/>
 
 
           <Header as='h3'>

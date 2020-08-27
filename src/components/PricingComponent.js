@@ -59,8 +59,6 @@ class PricingComponent extends Component {
   }
 
   render() {
-    // console.log(this.props.chooseSubscription[0]);
-    // console.log(this.props.currentUser);
     return (
       <div className="ui price-image fluid container">
       <div className='ui container'>

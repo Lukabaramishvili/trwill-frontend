@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react'
@@ -12,15 +11,12 @@ import PricingComponent from './components/PricingComponent'
 import DestinationShowPage from './components/DestinationShowPage'
 import HomePage from './components/HomePage'
 import HowItWorks from './components/HowItWorks'
+import Spinner from './common/Spinner';
 import { connect } from 'react-redux';
 
 const baseURL = 'https://trawill-backend.herokuapp.com';
 
 class App extends Component {
-
-	state = {
-		filter: ""
-	}
 
 	componentDidMount(){
 		const token = localStorage.getItem("token")
@@ -33,7 +29,6 @@ class App extends Component {
 			})
 			.then(res => res.json())
 			.then(response => {
-				// debugger
 				if (response.errors){
 					localStorage.removeItem("user_id")
 					alert(response.errors)
@@ -45,38 +40,24 @@ class App extends Component {
 		fetch(`${baseURL}/destinations`)
 		.then(res => res.json())
 		.then(destinations => {
-			// console.log("Fetched destinations in DestinationContainer:", destinations);
 			this.props.getDestinationsList(destinations)
 		})
 	}
 
-		handleFilter = (newInputValue) => {
-		this.setState({
-			filter: newInputValue
-		})
-	}
-
-		filterTheDestinations = () => {
-			return this.props.destinations.filter(destination => {
-			return destination.location.toLowerCase().includes(this.state.filter.toLowerCase())
-		})
-  	}
-
   render() {
+	if (this.props.destinations.length === 0) {
+		return <Spinner />
+	}
     return (
     <Grid>
 	<Navbar logOut={this.props.logOut} />
 	<Grid.Row centered>
 	<Switch>
         <Route path="/users/:id" component={UserAccount} />
-        <Route path="/destinations" render={(routerProps) => (
-			<div>
-				<DestinationContainer filterTheDestinations={this.filterTheDestinations()} handleFilter={this.handleFilter} {...routerProps} />
-			</div>
-			)} />
+        <Route path="/destinations" component={DestinationContainer} />
         <Route path="/pricing" component={PricingComponent} />
         <Route path="/show/:id" component={DestinationShowPage} />
-        <Route path="/(home|)/" component={HomePage} />
+        <Route path="/" exact component={HomePage} />
         <Route path="/how" component={HowItWorks} />
 		<Route path="/login" render={(routerProps) => {
 			return <LoginForm {...routerProps}/>
@@ -91,7 +72,6 @@ class App extends Component {
   }
 }
 
-//Reading to state
 function mapStateToProps(state){
 
   return {
