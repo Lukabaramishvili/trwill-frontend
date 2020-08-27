@@ -12,12 +12,12 @@ class Navbar extends Component {
         <Grid.Column width={16}>
           <Menu stackable>
           <Menu.Item header>
-            <NavLink to="/">
+            <NavLink exact to="/">
                <Image size='mini' src='../trawill-logo.png' style={{ marginRight: '1.5em' }} />
                TraWill
                </NavLink>
              </Menu.Item>
-             <NavLink className="item" to="/">
+             <NavLink exact className="item" to="/">
                Home
              </NavLink>
             <NavLink className="item" to="/how">
@@ -38,8 +38,8 @@ class Navbar extends Component {
                 <NavLink className="item" to={`/users/${this.props.currentUser.id}`}>
                   My Account
                 </NavLink>
-                <Menu.Item onClick={this.props.logOut}>
-                <NavLink to={'/login'}> Log out </NavLink>
+                <Menu.Item>
+                <NavLink  onClick={this.props.logOut} to={'/login'}> Log out </NavLink>
                 </Menu.Item>
               </Menu.Menu>
 

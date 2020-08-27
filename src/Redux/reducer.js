@@ -36,11 +36,6 @@ function reducer(state=initialState, action) {
       return {...state, currentUser: {...state.currentUser, trips: newTripsArr}}
 
     case 'DELETE_COMMENT_FROM_SHOW_PAGE':
-      // const destination = state.destination.find(dest => {
-      //   return action.payload.destination_id === dest.id
-      // })
-      // const filteredComments = destination.comments.filter(comment => comment.id !== action.payload.id)
-      // destination.comments = filteredComments
       const deletedCommentInDestination = state.destinations.map(destination =>{
         if(destination.id === action.payload.destination_id){
           const newComments = destination.comments.filter(comment => comment.id !== action.payload.id)
