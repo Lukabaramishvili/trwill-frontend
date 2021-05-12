@@ -5,7 +5,7 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.9.28",
     "@amcharts/amcharts4-geodata": "^4.1.15",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "eslint-plugin-import": "^2.22.0",
     "moment": "^2.27.0",
     "react": "^16.13.1",
