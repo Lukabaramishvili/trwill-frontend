@@ -7,7 +7,7 @@
     "@amcharts/amcharts4-geodata": "^4.1.15",
     "chart.js": "^2.9.3",
     "eslint-plugin-import": "^2.22.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
